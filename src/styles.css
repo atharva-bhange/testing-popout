@@ -1,0 +1,43 @@
+.App {
+  font-family: sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.popout {
+  width: 200px;
+  height: 200px;
+  background-color: pink;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.2s ease-in-out;
+}
+
+.active {
+  right: -1000px;
+}
+
+.opener {
+  height: 100px;
+  width: 30px;
+  background-color: blue;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0px;
+  transition: all 0.2s ease-in-out;
+}
+
+.opener-active {
+  right: -100px;
+}

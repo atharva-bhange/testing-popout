@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
+import Popout from "./popout";
+import Opener from "./opener";
+import { useEffect, useState } from "react";
 
-function App() {
+export default function App() {
+  const [isOpen, setIsOpen] = useState(false);
+  const onKeyPress = (e: KeyboardEvent) => {
+    if (e.ctrlKey && e.which === 192) {
+      e.preventDefault();
+      setIsOpen(!isOpen);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("keydown", onKeyPress);
+    return () => {
+      document.removeEventListener("keydown", onKeyPress);
+    };
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <button onClick={() => setIsOpen(!isOpen)}>Click me</button> */}
+      <Popout isOpen={isOpen} onDabaya={() => setIsOpen(false)} />
+      <Opener isOpen={isOpen} onDabaya={() => setIsOpen(true)} />
     </div>
   );
 }
-
-export default App;
